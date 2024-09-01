@@ -12,3 +12,8 @@
         pm2 save; \
         pm2 list; \
         '
+      register: command_output
+
+    - name: Show output of the commands
+      debug:
+        msg: "{{ command_output.stdout_lines }}"
