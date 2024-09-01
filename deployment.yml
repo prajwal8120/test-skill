@@ -1,12 +1,14 @@
 - hosts: deploy-server
   tasks:
-    - name: Run all commands in a single shell session
+    - name: Run all commands in a single shell session with bash
       shell: |
-        source /home/ubuntu/.nvm/nvm.sh      # Source nvm script to set up the environment
-        nvm use 22.6.0                       # Use the correct Node.js version
-        cd /home/ubuntu/demo                 # Navigate to the application directory
-        ls                                   # List files to verify the directory
-        whoami                               # Verify the current user
-        tar -xzf app.tar.gz                  # Extract the tar file
-        npm install                          # Install dependencies
-        pm2 start npm --name "skillup-webportal-dev" -- run dev  # Start the application
+        bash -c ' \
+        source /home/ubuntu/.nvm/nvm.sh; \
+        nvm use 22.6.0; \
+        cd /home/ubuntu/demo; \
+        ls; \
+        whoami; \
+        tar -xzf app.tar.gz; \
+        npm install; \
+        pm2 start npm --name "skillup-webportal-dev" -- run dev; \
+        '
