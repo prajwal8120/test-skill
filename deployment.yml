@@ -1,14 +1,14 @@
 - hosts: deploy-server
   tasks:
-    - name: Run all commands in a single shell session with bash
+    - name: Run commands in a shell session
       shell: |
         bash -c ' \
         source /home/ubuntu/.nvm/nvm.sh; \
         nvm use 22.6.0; \
         cd /home/ubuntu/demo; \
-        ls; \
-        whoami; \
         tar -xzf app.tar.gz; \
         npm install; \
         pm2 start npm --name "skillup-webportal-dev" -- run dev; \
+        pm2 save; \
+        pm2 list; \
         '
