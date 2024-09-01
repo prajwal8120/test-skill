@@ -12,6 +12,6 @@
     - name: Extract tar file
       shell: tar -xzf app.tar.gz
     - name: Run npm install for dependencies installation
-      shell: npm install
+      shell: /home/ubuntu/.nvm/versions/node/v22.6.0/bin/npm install
     - name: pm2 start
       shell: pm2 start npm --name "skillup-webportal-dev" -- run dev
