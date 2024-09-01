@@ -1,2 +1,2 @@
-[deploy]
+[deploy-server]
 172.31.90.180 ansible_ssh_user=ubuntu
