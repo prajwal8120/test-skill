@@ -3,9 +3,15 @@
   #become : true
   #become_user: ansadmin
   tasks: 
-    - name: Establish a login to ECR
-      shell: cd /home/ubuntu/demo && ls
-    - name: Pull the image from ECR to CD server
-      shell: docker pull 107414687854.dkr.ecr.ap-south-1.amazonaws.com/demoimagerepo:37
-    - name: Run the container using the docker image
-      shell: docker run --name=my-app -p 8080:8080 --detach 107414687854.dkr.ecr.ap-south-1.amazonaws.com/demoimagerepo:37
+    - name: Change directory to remote server path
+      shell: cd /home/ubuntu/demo
+    - name: debug with list
+      shell: ls
+    - name: debug with whoami
+      shell: whoami
+    - name: Extract tar file
+      shell: tar -xzf app.tar.gz
+    - name: Run npm install for dependencies installation
+      shell: npm install
+    - name: pm2 start
+      shell: pm2 start npm --name "skillup-webportal-dev" -- run dev
